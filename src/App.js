@@ -45,7 +45,7 @@ class App extends Component {
       catalogSelected: catalogs[3],
       slideActive: false,
       slideTimer: null,
-      slideDuration: 200,
+      slideDuration: 3000,
     };
     this.selectedCatalog = this.selectedCatalog.bind(this);
     this.previousClick = this.previousClick.bind(this);
