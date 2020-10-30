@@ -45,7 +45,7 @@ class App extends Component {
       catalogSelected: catalogs[3],
       slideActive: false,
       slideTimer: null,
-      slideDuration: 3000,
+      slideDuration: 200,
     };
     this.selectedCatalog = this.selectedCatalog.bind(this);
     this.previousClick = this.previousClick.bind(this);
@@ -72,11 +72,23 @@ class App extends Component {
   }
 
   slideChange(event) {
-    this.setState({ slideActive: !slideActive, })
+    // this.state.slideTimer = setInterval(() => {this.nextClick()}, this.state.slideDuration)
+    const { slideActive } = this.state;
+    const isActive = !slideActive
+    console.log(isActive)
+    if (isActive != slideActive) {
+      this.setState({ slideActive: isActive})
+    }
+    this.resetSlideTimer(isActive)
   }
-
+  
   resetSlideTimer(isActive = false) {
-
+    // console.log("here", isActive)
+    if (isActive) {
+      this.state.slideTimer = setInterval(() => {this.nextClick()}, this.state.slideDuration)
+    } else {
+      clearInterval(this.state.slideTimer)
+    }
   }
 
   onSlideChange() {
