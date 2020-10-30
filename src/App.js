@@ -41,7 +41,7 @@ class App extends Component {
     this.state = {
       title: 'Catalog Viewer',
       catalogs: [...catalogs],
-      currentIndex: -1,
+      currentIndex: 0,
       catalogSelected: catalogs[3],
       slideActive: false,
       slideTimer: null,
@@ -56,19 +56,23 @@ class App extends Component {
   }
 
   selectedCatalog(index) {
-
+    this.setState({ catalogSelected: catalogs[index] })
   }
 
   previousClick() {
-
+    const selected = (this.state.currentIndex + 1) % 4
+    this.selectedCatalog(selected)
+    this.setState({currentIndex: selected })
   }
 
   nextClick() {
-
+    const selected = (this.state.currentIndex + 1)%4
+    this.selectedCatalog(selected)
+    this.setState({ currentIndex: selected })
   }
 
   slideChange(event) {
-
+    this.setState({ slideActive: !slideActive, })
   }
 
   resetSlideTimer(isActive = false) {
