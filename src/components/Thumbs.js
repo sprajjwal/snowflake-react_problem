@@ -8,7 +8,8 @@ class Thumbs extends Component {
     }
 
     onImageSelect(event) {
-
+        const id = event.target.id
+        this.props.selectedCatalog(id)
     }
 
   render() {
